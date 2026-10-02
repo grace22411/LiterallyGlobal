@@ -6,5 +6,8 @@
   NODE_VERSION = "22"
   APP_URL = "https://www.literallyglobal.com"
 
-# Netlify automatically installs its OpenNext adapter for this Next.js app.
+# Explicitly enable the Next.js adapter for GitHub/API-created Netlify sites.
 # Configure private provider credentials in Netlify environment variables.
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
