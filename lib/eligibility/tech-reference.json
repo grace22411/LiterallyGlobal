@@ -1,0 +1,246 @@
+[
+  {
+    "id": "company_type",
+    "type": "single",
+    "title": "Are you working or have worked in a product-led digital technology company?",
+    "description": "The GTV Digital Technology route is designed for individuals in companies whose primary revenue comes from a proprietary digital product, platform, or technical service (e.g. FinTech, AI/ML, Cybersecurity, SaaS, Gaming, Data Infrastructure). Service-only or outsourcing companies do not qualify.",
+    "options": [
+      {
+        "label": "Yes, my company is product-led in digital tech",
+        "value": "yes",
+        "score": 2
+      },
+      {
+        "label": "Partially -- we have some digital products but also offer services",
+        "value": "partial",
+        "score": 1
+      },
+      {
+        "label": "No -- I work in consulting, outsourcing, or service-only",
+        "value": "no",
+        "score": 0
+      }
+    ]
+  },
+  {
+    "id": "role_type",
+    "type": "single",
+    "title": "Are you a technical or business leader/aspiring leader?",
+    "description": "Technical profiles include senior software engineers, DevOps experts, AI/ML specialists, data scientists, CTOs. Business profiles include product managers, growth leads, C-level executives in product-led tech companies.",
+    "hasSkillsLink": true,
+    "options": [
+      {
+        "label": "Yes, I hold a technical role (engineer, architect, CTO, etc.)",
+        "value": "tech_leader",
+        "score": 2
+      },
+      {
+        "label": "Yes, I hold a business role in a tech company (PM, VP, C-level)",
+        "value": "biz_leader",
+        "score": 2
+      },
+      {
+        "label": "I'm in a mid-level technical role with growing responsibilities",
+        "value": "mid_level",
+        "score": 1
+      },
+      {
+        "label": "My role is non-technical in a non-tech company",
+        "value": "non_tech",
+        "score": 0
+      }
+    ]
+  },
+  {
+    "id": "talent_route",
+    "type": "single",
+    "title": "Which route best describes you?",
+    "description": "Exceptional Talent (Leader): You've been recognised as a leading talent in digital tech in the last 5 years. Exceptional Promise (Emerging Leader): You have the potential to become a leader, usually with fewer than 5 years in senior tech roles.",
+    "options": [
+      {
+        "label": "Exceptional Talent -- I have 5+ years and recognised leadership in tech",
+        "value": "talent",
+        "score": 2
+      },
+      {
+        "label": "Exceptional Promise -- I'm an emerging leader with strong potential",
+        "value": "promise",
+        "score": 2
+      },
+      {
+        "label": "I'm not sure which route applies to me",
+        "value": "unsure",
+        "score": 1
+      },
+      {
+        "label": "I don't think either applies to me yet",
+        "value": "neither",
+        "score": 0
+      }
+    ]
+  },
+  {
+    "id": "evidence_impact",
+    "type": "multi",
+    "title": "Can you say you have done one or more of the following?",
+    "description": "Select all that apply. These are the types of evidence that demonstrate measurable impact beyond your day-to-day employment.",
+    "strongThreshold": 2,
+    "options": [
+      {
+        "label": "Led the growth of an NGO or tech-led initiative",
+        "value": "ngo_growth"
+      },
+      {
+        "label": "Spoken at a high-profile event (nationally or internationally recognised)",
+        "value": "speaking"
+      },
+      {
+        "label": "Received any awards outside of your 9-5",
+        "value": "awards"
+      },
+      {
+        "label": "Been featured in any publication for your thought leadership",
+        "value": "publications"
+      },
+      {
+        "label": "Been in a position where you had to judge the work of others (outside your 9-5)",
+        "value": "judging"
+      },
+      {
+        "label": "Earn a high salary (£30,000 and above)",
+        "value": "high_salary"
+      },
+      {
+        "label": "Contributed substantially to open source",
+        "value": "open_source"
+      },
+      {
+        "label": "None of the above",
+        "value": "none"
+      }
+    ]
+  },
+  {
+    "id": "innovation",
+    "type": "single",
+    "title": "Can you demonstrate innovation in digital technology?",
+    "description": "This means providing evidence of innovation in a genuine and significant product-led digital technology business you have established as a founder or senior executive, or as an employee working in a new digital field.",
+    "options": [
+      {
+        "label": "Yes, I can provide strong evidence of innovation with revenue traction and formal accounts",
+        "value": "strong",
+        "score": 2
+      },
+      {
+        "label": "I have some evidence of innovation but may need to strengthen it",
+        "value": "some",
+        "score": 1
+      },
+      {
+        "label": "I don't have clear evidence of innovation yet",
+        "value": "none",
+        "score": 0
+      }
+    ]
+  },
+  {
+    "id": "outside_work",
+    "type": "multi",
+    "title": "What do you do outside of your 9-5?",
+    "description": "Select all that apply. Contributions outside your primary employment demonstrate sector-wide impact and thought leadership.",
+    "strongThreshold": 2,
+    "options": [
+      {
+        "label": "I speak at events",
+        "value": "speaking"
+      },
+      {
+        "label": "I mentor people outside of my 9-5 in a structured setting (this is not sponsorship)",
+        "value": "mentoring"
+      },
+      {
+        "label": "I have written articles/publications that have been featured on big platforms",
+        "value": "writing"
+      },
+      {
+        "label": "I contribute to open source",
+        "value": "open_source"
+      },
+      {
+        "label": "None of the above",
+        "value": "none"
+      }
+    ]
+  },
+  {
+    "id": "significant_contribution",
+    "type": "single",
+    "title": "Can you demonstrate significant technical, commercial or entrepreneurial contributions?",
+    "description": "This requires demonstrating impact (not just innovation) as a founder, senior executive, board member or employee of a product-led digital technology company. Technical examples: leading development of high-impact products, contributing to open source in ways acknowledged by peers, working as a key engineer in a startup's core product. Business examples: leading or playing a key role in company growth, influencing investment and strategy, or founding a successful product-led company.",
+    "options": [
+      {
+        "label": "Yes, I can evidence significant contributions with supporting documents",
+        "value": "strong",
+        "score": 2
+      },
+      {
+        "label": "I have some contributions but need to package them better",
+        "value": "some",
+        "score": 1
+      },
+      {
+        "label": "I don't have clear evidence of significant contributions yet",
+        "value": "none",
+        "score": 0
+      }
+    ]
+  },
+  {
+    "id": "academics",
+    "type": "multi",
+    "title": "Academic achievements -- select all that apply",
+    "description": "Academic credentials can strengthen your application, particularly for the Exceptional Promise route.",
+    "strongThreshold": 2,
+    "options": [
+      {
+        "label": "I have a distinction in my Master's or PhD",
+        "value": "distinction"
+      },
+      {
+        "label": "My work has been published in academic papers",
+        "value": "published"
+      },
+      {
+        "label": "I can provide verifiable proof of these achievements",
+        "value": "proof"
+      },
+      {
+        "label": "None of the above",
+        "value": "none"
+      }
+    ]
+  },
+  {
+    "id": "recommendation_letters",
+    "type": "single",
+    "title": "Can you provide recommendation letters?",
+    "description": "You will need 3 letters of recommendation from established senior figures in the digital technology sector who can speak to your abilities and impact. These cannot be from family members and should come from people who are recognised leaders in the field.",
+    "options": [
+      {
+        "label": "Yes, I have 3 suitable recommenders who can write strong letters",
+        "value": "yes_3",
+        "score": 2
+      },
+      {
+        "label": "I have 1-2 suitable recommenders but need more",
+        "value": "some",
+        "score": 1
+      },
+      {
+        "label": "I don't have suitable recommenders yet",
+        "value": "none",
+        "score": 0
+      }
+    ]
+  }
+]

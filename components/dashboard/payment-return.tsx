@@ -1,0 +1,4 @@
+"use client";
+import { useEffect,useRef,useState } from "react";
+import { useRouter } from "next/navigation";
+export function PaymentReturn({paid,pending}:{paid:number;pending:boolean}){const router=useRouter();const initialPaid=useRef(paid);const [attempts,setAttempts]=useState(0);const confirmed=paid>initialPaid.current||(!pending&&paid>0);useEffect(()=>{if(confirmed||attempts>=5)return;const timer=setTimeout(()=>{router.refresh();setAttempts(a=>a+1);},3000);return()=>clearTimeout(timer);},[attempts,confirmed,router]);return <p className="form-notice" role="status">{confirmed?"Your payment is confirmed. Your updated balance is shown below.":attempts<5?"Checking your payment status… Your request is saved, and this page will update automatically.":"Your payment has not been confirmed here yet. Use Refresh status below or contact us if you have a receipt. You don’t need to submit your request again."}</p>;}

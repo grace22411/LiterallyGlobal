@@ -1,0 +1,127 @@
+{
+  "importedOn": "2026-10-02",
+  "mode": "reviewed-snapshot",
+  "originalsBundled": false,
+  "references": [
+    {
+      "id": "REVIEW-INSTRUCTIONS",
+      "kind": "review-method",
+      "sha256": "57ba105164a8462827f021f4a41be9f3eb05a1dda7af6a6ad49ce79bca75d69a",
+      "format": "md",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "text extraction and review"
+    },
+    {
+      "id": "CASE-A",
+      "kind": "anonymised-case-lessons",
+      "sha256": "a2ebdea9b33a0763629b8eb37cd1f33a1b760c109c9e9ea6f935502fc19dafc8",
+      "format": "pdf",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "text extraction and review"
+    },
+    {
+      "id": "TECH-GUIDE",
+      "kind": "technology-guide",
+      "sha256": "6701219db99ff9f2e7417f6265ce045d357e8d84433e10b3a0e3043a8d10b083",
+      "format": "docx",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "text extraction and review"
+    },
+    {
+      "id": "CASE-A-REVIEW-3",
+      "kind": "anonymised-review-lessons",
+      "sha256": "348772565b21b3e31572bff83f2564235d3f08df3f5051a493bf84830b6d7dbb",
+      "format": "jpeg",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "visual inspection"
+    },
+    {
+      "id": "CASE-A-REVIEW-4",
+      "kind": "anonymised-review-lessons",
+      "sha256": "a86a0b846d3da38094aac789379c930b5cfd0fd460f8aab0be2ab201c3afd999",
+      "format": "jpeg",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "visual inspection"
+    },
+    {
+      "id": "CASE-A-REVIEW-5",
+      "kind": "anonymised-review-lessons",
+      "sha256": "c88f934483c13d0daf06db01b17ace76e3fe63f85990204692f8d6267456568c",
+      "format": "jpeg",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "visual inspection"
+    },
+    {
+      "id": "CASE-A-REVIEW-6",
+      "kind": "anonymised-review-lessons",
+      "sha256": "b1bb437929544cdfece2351f5bd0bd78196683cd3596c571d1b49d8c23c61fb3",
+      "format": "jpeg",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "visual inspection"
+    },
+    {
+      "id": "CASE-A-REVIEW-7",
+      "kind": "anonymised-review-lessons",
+      "sha256": "65d176541e3cc70018a822703b7debde24fc4d9a0050ff4cb7cb69c02c3a94d9",
+      "format": "jpeg",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "visual inspection"
+    },
+    {
+      "id": "CASE-A-REVIEW-8",
+      "kind": "anonymised-review-lessons",
+      "sha256": "183d9ca0052ce8c9e8b9c5179f90b2db591cb2cf6d6b64ecd12645c93873d795",
+      "format": "jpeg",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "visual inspection"
+    },
+    {
+      "id": "CASE-A-REVIEW-9",
+      "kind": "anonymised-review-lessons",
+      "sha256": "68fccaa9fce23d850e89fbf1b9b14286f4988666e8ff476fd5a8fe93e71ec7f4",
+      "format": "jpeg",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "visual inspection"
+    },
+    {
+      "id": "CASE-A-REVIEW-10",
+      "kind": "anonymised-review-lessons",
+      "sha256": "ed4896d5f6db1685f3af85a5815cedbf9d4aa9e1c7e91c7cc3b74a8fd3c81bb5",
+      "format": "jpeg",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "visual inspection"
+    },
+    {
+      "id": "CASE-B-11",
+      "kind": "anonymised-case-lessons",
+      "sha256": "c378ad9f759a88cfeee6e72a4dc85a6d8d9ce9899efa2cb34f31d9a11e4e7b66",
+      "format": "jpeg",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "visual inspection"
+    },
+    {
+      "id": "CASE-B-12",
+      "kind": "anonymised-case-lessons",
+      "sha256": "5f4442416ebfab092f313266877808d488d3fbfa2023d0d1d911154eebcc29eb",
+      "format": "jpeg",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "visual inspection"
+    },
+    {
+      "id": "RESEARCH-OVERVIEW",
+      "kind": "research-overview",
+      "sha256": "e8ef3e403de91c7e2a3d31ca70eb42226d58d61b8c62a7354e3689c6bb1134a0",
+      "format": "pdf",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "text extraction and review"
+    },
+    {
+      "id": "RESEARCH-PEER",
+      "kind": "research-peer-review",
+      "sha256": "1b549c142274565c556e800d53ed65cbe0810eb1038be77c5e43a2df919cbd2e",
+      "format": "pdf",
+      "handling": "reviewed and distilled; original not distributed",
+      "method": "text extraction and review"
+    }
+  ]
+}

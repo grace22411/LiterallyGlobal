@@ -1,0 +1,10 @@
+"use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { postJson } from "@/lib/eligibility/draft";
+export function ApplicationActions({id,draft,paymentLabel}:{id:string;draft?:boolean;paymentLabel?:string}){
+ const router=useRouter();const [busy,setBusy]=useState(false),[error,setError]=useState("");
+ async function action(){setBusy(true);setError("");try{const result=await postJson<{url?:string;paid?:boolean}>(`/api/applications/${id}/${draft?"submit":"checkout"}`,{});if(result.url){const url=new URL(result.url);if(url.protocol!=="https:"||url.hostname!=="checkout.stripe.com")throw new Error("Invalid checkout destination.");window.location.assign(url.href);}else router.refresh();}catch(caught){setError(caught instanceof Error?caught.message:"Please try again.");}finally{setBusy(false);}}
+ return <div>{(draft||paymentLabel)&&<button className="button button-gold" disabled={busy} onClick={action}>{busy?"Please wait…":draft?"Submit saved request":paymentLabel}</button>}<button className="text-button refresh-request" onClick={()=>router.refresh()}>Refresh status</button>{error&&<p role="alert" className="form-error">{error}</p>}</div>;
+}
+export function AdditionalFiles({id}:{id:string}){const router=useRouter();const [busy,setBusy]=useState(false),[error,setError]=useState("");return <div><label className="field-label">Attach documents to your saved draft<input type="file" accept=".pdf,.docx,.png,.jpg,.jpeg" disabled={busy} onChange={async(event)=>{const file=event.target.files?.[0];if(!file)return;setBusy(true);setError("");try{const body=new FormData();body.append("file",file);const response=await fetch(`/api/applications/${id}/files`,{method:"POST",body});const result=await response.json();if(!response.ok)throw new Error(result.error);router.refresh();}catch(caught){setError(caught instanceof Error?caught.message:"Upload failed.");}finally{setBusy(false);}}}/></label>{busy&&<p role="status">Uploading…</p>}{error&&<p className="form-error" role="alert">{error}</p>}</div>;}

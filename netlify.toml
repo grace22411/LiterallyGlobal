@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  APP_URL = "https://www.literallyglobal.com"
+
+# Netlify automatically installs its OpenNext adapter for this Next.js app.
+# Configure private provider credentials in Netlify environment variables.

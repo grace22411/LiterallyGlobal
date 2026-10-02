@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { verifiedUser } from "@/lib/supabase/server";
+import { isAdminEmail } from "@/lib/applications/access";
+import { contactEmail } from "@/lib/site";
+import { SignOutButton } from "@/components/dashboard/account-actions";
+export const metadata={title:"Account & support"};
+export default async function AccountPage(){const user=await verifiedUser();if(!user)redirect("/login");return <><div className="workspace-page-heading"><div><p className="eyebrow">YOUR ACCOUNT</p><h1>Account & support</h1><p>Your details and a direct line to the LiterallyGlobal team.</p></div></div><div className="workspace-overview-grid"><section className="workspace-panel"><h2>Your details</h2><dl className="detail-list"><dt>Name</dt><dd>{typeof user.user_metadata?.full_name==="string"?user.user_metadata.full_name:"Not provided"}</dd><dt>Email</dt><dd>{user.email}<span className="account-verified">Verified</span></dd><dt>Access</dt><dd>{isAdminEmail(user.email)?"Client & team administrator":"Client"}</dd></dl>{isAdminEmail(user.email)&&<Link href="/admin" className="button button-dark">Admin dashboard ↗</Link>}<SignOutButton/></section><section className="workspace-panel"><h2>How can we help?</h2><p>For an update on a request, include the request reference from My requests so we can find it quickly.</p><a className="button button-outline" href={`mailto:${contactEmail}`}>Email the team ↗</a><p className="fine-print">To correct your account details or request deletion, contact us using your verified email.</p><Link className="text-link" href="/privacy" target="_blank">Privacy notice ↗</Link></section></div></>;}

@@ -1,0 +1,11 @@
+import { z } from "zod";
+import { requireUser,isAdminEmail } from "@/lib/applications/access";
+import { adminClient } from "@/lib/supabase/server";
+import { pdfResponse } from "@/lib/reports/pdf";
+import { errorResponse,HttpError } from "@/lib/server/http";
+import { sources } from "@/lib/eligibility/questions";
+import type { Conversation } from "@/lib/grace-ai/schema";
+export async function GET(_request:Request,{params}:{params:Promise<{id:string}>}){try{
+ const user=await requireUser();const{id}=await params;if(!z.uuid().safeParse(id).success)throw new HttpError(404,"Report not found.");let query=adminClient().from("grace_conversations").select("id,route,assessment_id,turns,report,version,created_at,updated_at").eq("id",id);if(!isAdminEmail(user.email))query=query.eq("user_id",user.id);const{data,error}=await query.maybeSingle();if(error)throw new HttpError(503,"Unable to load the discussion.");const c=data as Conversation|null;if(!c?.report)throw new HttpError(404,"No report is available for this conversation yet.");
+ return pdfResponse({title:"Your Grace AI discussion report",subtitle:`${c.route.replaceAll("-"," ")} | ${new Date(c.updated_at).toLocaleDateString("en-GB")}`,sections:[{heading:"About this discussion",paragraphs:["This is an AI-generated preparation summary based on information you shared. It is not a personal verdict from Grace, a document review or a visa decision. Check the official guidance and discuss uncertainties before acting.",`Rules snapshot: ${c.report.rulesVersion??"not recorded for this earlier discussion"}. No live guidance check was performed.`,...(c.report.knowledgeSource?[`Knowledge: ${c.report.knowledgeSource}${c.report.knowledgeVersion?` (${c.report.knowledgeVersion})`:""}.`]:[])]},{heading:"Summary",paragraphs:[c.report.summary]},{heading:"Self-reported strengths",paragraphs:c.report.strengths},{heading:"Gaps and questions",paragraphs:c.report.gaps},{heading:"Your next steps",paragraphs:c.report.nextSteps},{heading:"Your discussion",paragraphs:c.turns.flatMap(t=>[`You: ${t.message}`,`Grace AI: ${t.reply}`])},{heading:"Check the official guidance",paragraphs:[sources.general,c.route==="digital-technology"?sources.tech:c.route==="design"?sources.design:sources.research]}]},`literallyglobal-grace-ai-${id}.pdf`);
+}catch(error){return errorResponse(error);}}

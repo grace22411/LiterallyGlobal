@@ -1,0 +1,6 @@
+import { z } from "zod";
+import { requireUser,isAdminEmail } from "@/lib/applications/access";
+import { adminClient } from "@/lib/supabase/server";
+import { pdfResponse } from "@/lib/reports/pdf";
+import { errorResponse,HttpError } from "@/lib/server/http";
+export async function GET(_request:Request,{params}:{params:Promise<{id:string}>}){try{const user=await requireUser();const {id}=await params;if(!z.uuid().safeParse(id).success)throw new HttpError(404,"Report not found.");let query=adminClient().from("service_applications").select("id,name,service,decision,verdict,created_at").eq("id",id);if(!isAdminEmail(user.email))query=query.eq("user_id",user.id);const {data,error}=await query.maybeSingle();if(error)throw new HttpError(503,"Unable to load the report.");if(!data||!data.verdict)throw new HttpError(404,"Grace’s verdict is not available yet.");return pdfResponse({title:"Grace’s verdict & your next steps",subtitle:`${data.name} | ${data.service.replaceAll("-"," ")}`,sections:[{heading:"Personal review by Grace",paragraphs:[data.verdict]},{heading:"About this recommendation",paragraphs:["This is a service-readiness recommendation from LiterallyGlobal. It is not a decision by an endorsing body or the Home Office."]} ]},"LiterallyGlobal-Grace-verdict.pdf");}catch(error){return errorResponse(error);}}
