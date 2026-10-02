@@ -1,5 +1,6 @@
 "use client";
 
+import { UiIcon } from "@/components/ui-icon";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Brand } from "@/components/brand";
@@ -58,7 +59,7 @@ export function SiteHeader() {
             <Link href={href} key={href} onClick={() => setMenuOpen(false)}>{label}</Link>
           ))}
           <Link href="/eligibility" className="button button-dark nav-cta" onClick={() => setMenuOpen(false)}>
-            Check eligibility <span aria-hidden="true">↗</span>
+            Check eligibility <span aria-hidden="true"><UiIcon name="arrow-up-right" /></span>
           </Link>
         </nav>
       </div>

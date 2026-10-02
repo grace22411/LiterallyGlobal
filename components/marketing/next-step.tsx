@@ -1,5 +1,6 @@
 "use client";
 
+import { UiIcon } from "@/components/ui-icon";
 const options = [
   ["consultation", "I need direction"],
   ["document-review", "I have a draft"],
@@ -14,7 +15,7 @@ export function NextStep() {
       <div className="step-options">
         {options.map(([id, label]) => (
           <a key={id} href={`#${id}`} onClick={() => document.getElementById(id)?.focus({ preventScroll: true })}>
-            {label} <span aria-hidden="true">↗</span>
+            {label} <span aria-hidden="true"><UiIcon name="arrow-up-right" /></span>
           </a>
         ))}
       </div>

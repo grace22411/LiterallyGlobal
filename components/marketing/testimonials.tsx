@@ -1,5 +1,6 @@
 "use client";
 
+import { UiIcon } from "@/components/ui-icon";
 import { useState } from "react";
 import styles from "./testimonials.module.css";
 
@@ -74,7 +75,7 @@ export function Testimonials() {
               >
                 <span className={styles.initial} aria-hidden="true">{story.name === "Anonymous" ? "✦" : story.name[0]}</span>
                 <span className={styles.person}><strong>{story.name}</strong><span>{story.journey}</span></span>
-                <span className={styles.pickerArrow} aria-hidden="true">↗</span>
+                <span className={styles.pickerArrow} aria-hidden="true"><UiIcon name="arrow-up-right" /></span>
               </button>
             ))}
           </div>
@@ -98,8 +99,8 @@ export function Testimonials() {
                 {stories.map((story, index) => <span key={story.name} className={index === active ? styles.current : undefined} />)}
               </div>
               <div className={styles.arrows}>
-                <button type="button" onClick={() => move(-1)} aria-label="Previous client story" aria-controls="client-story-panel">←</button>
-                <button type="button" onClick={() => move(1)} aria-label="Next client story" aria-controls="client-story-panel">→</button>
+                <button type="button" onClick={() => move(-1)} aria-label="Previous client story" aria-controls="client-story-panel"><UiIcon name="arrow-left" /></button>
+                <button type="button" onClick={() => move(1)} aria-label="Next client story" aria-controls="client-story-panel"><UiIcon name="arrow-right" /></button>
               </div>
             </div>
           </div>

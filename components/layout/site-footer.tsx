@@ -1,3 +1,4 @@
+import { UiIcon } from "@/components/ui-icon";
 import { Brand } from "@/components/brand";
 import { contactEmail, destinationLinks, socialLinks } from "@/lib/site";
 
@@ -13,12 +14,12 @@ export function SiteFooter() {
               <a href="/resources">Free resources</a>
               <a href="/#about">Meet Grace</a>
               <a href="/privacy">Privacy</a>
-              <a href={`mailto:${contactEmail}`}>Get in touch <span aria-hidden="true">↗</span></a>
+              <a href={`mailto:${contactEmail}`}>Get in touch <span aria-hidden="true"><UiIcon name="arrow-up-right" /></span></a>
             </div>
             <div className="footer-links footer-social" role="group" aria-label="Social media and community">
-              <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span></a>
-              <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-              <a href={destinationLinks.community} target="_blank" rel="noopener noreferrer">WhatsApp community <span aria-hidden="true">↗</span></a>
+              <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true"><UiIcon name="arrow-up-right" /></span></a>
+              <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true"><UiIcon name="arrow-up-right" /></span></a>
+              <a href={destinationLinks.community} target="_blank" rel="noopener noreferrer">WhatsApp community <span aria-hidden="true"><UiIcon name="arrow-up-right" /></span></a>
             </div>
           </div>
         </div>

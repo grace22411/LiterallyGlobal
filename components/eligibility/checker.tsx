@@ -1,5 +1,6 @@
 "use client";
 
+import { UiIcon } from "@/components/ui-icon";
 import Link from "next/link";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
@@ -102,29 +103,29 @@ export function EligibilityChecker({ signedIn }: { signedIn: boolean }) {
           <p className="eyebrow">01 / YOUR ROUTE</p>
           <h2 ref={heading} tabIndex={-1}>Where does your work fit?</h2>
           <p>Choose a field to see the questions for that pathway.</p>
-          <div className="route-options">{routes.map((item) => <button type="button" className="route-option" onClick={() => chooseRoute(item.id)} key={item.id}><span className="route-index">{item.mark}</span><span><strong>{item.name}</strong><span>{item.description}</span></span><span aria-hidden="true">↗</span></button>)}</div>
+          <div className="route-options">{routes.map((item) => <button type="button" className="route-option" onClick={() => chooseRoute(item.id)} key={item.id}><span className="route-index">{item.mark}</span><span><strong>{item.name}</strong><span>{item.description}</span></span><span aria-hidden="true"><UiIcon name="arrow-up-right" /></span></button>)}</div>
           <p className="fine-print">Free to check. You’ll be asked to create an account at the end to view your result.</p>
         </> : !started ? <div className="checker-intro">
           <span className="checker-intro-icon" aria-hidden="true">✓</span>
           <h2 ref={heading} tabIndex={-1}>Are You Eligible for the UK Global Talent Visa?</h2>
           <p>Answer a few questions to find out if you could qualify for the UK Global Talent Visa (Digital Technology route) and get personalised recommendations.</p>
           <p className="fine-print">Takes less than 3 minutes</p>
-          <button className="button button-gold" onClick={()=>setStarted(true)}>Start the Assessment →</button>
-          <button className="text-button" onClick={()=>setRoute(null)}>← Choose another route</button>
+          <button className="button button-gold" onClick={()=>setStarted(true)}>Start the Assessment <UiIcon name="arrow-right" /></button>
+          <button className="text-button" onClick={()=>setRoute(null)}><UiIcon name="arrow-left" /> Choose another route</button>
         </div> : question ? <form onSubmit={next} key={question.id} className="checker-question-step">
           <div className="checker-progress-label"><span>Question {step + 1} of {questions.length}</span><span>{Math.round((step+1)/(questions.length+2)*100)}%</span></div>
           <progress value={step} max={questions.length} aria-label="Questions completed" />
           <h2 ref={heading} tabIndex={-1} id="question-title">{question.title}</h2>
           {question.help && <p id="question-help" className="question-help">{question.help}</p>}
-          {question.hasSkillsLink&&<a className="official-link" href="https://www.gov.uk/government/publications/global-talent-endorsing-bodies/technical-or-business-skills-covered-by-tech-nation" target="_blank" rel="noreferrer">See full list of skills accepted ↗</a>}
+          {question.hasSkillsLink&&<a className="official-link" href="https://www.gov.uk/government/publications/global-talent-endorsing-bodies/technical-or-business-skills-covered-by-tech-nation" target="_blank" rel="noreferrer">See full list of skills accepted <UiIcon name="arrow-up-right" /></a>}
           {question.reviewHelp&&<details className="checker-guidance"><summary>How this evidence is assessed</summary><p>{question.reviewHelp}</p></details>}
           {question.type==="multi"&&<p className="multi-select-hint">Select all that apply. “None of the above” clears other choices.</p>}
           <fieldset className="answer-options" aria-labelledby="question-title" aria-describedby={question.help ? "question-help" : undefined}>
             {question.options.map((option) => route==="digital-technology"&&question.type!=="multi"?<button type="button" className={`answer-option${answers[question.id]===option.value?" chosen":""}`} key={option.value} disabled={advancing} aria-pressed={answers[question.id]===option.value} onClick={()=>answer(option.value)}>{option.label}</button>:<label className={`answer-option${(question.type==="multi"?selectedOptions(answers[question.id]).includes(option.value):answers[question.id] === option.value) ? " chosen" : ""}`} key={option.value}><input type={question.type==="multi"?"checkbox":"radio"} name={question.id} value={option.value} checked={(question.type==="multi"?selectedOptions(answers[question.id]).includes(option.value):answers[question.id] === option.value)} onChange={() => answer(option.value)} /><span>{option.label}</span></label>)}
           </fieldset>
-          {question.source && <a className="official-link" href={question.source} target="_blank" rel="noreferrer">Read the official guidance <span aria-hidden="true">↗</span></a>}
+          {question.source && <a className="official-link" href={question.source} target="_blank" rel="noreferrer">Read the official guidance <span aria-hidden="true"><UiIcon name="arrow-up-right" /></span></a>}
           {error && <p role="alert" className="form-error">{error}</p>}
-          <div className="form-actions"><button type="button" className="text-button" disabled={advancing} onClick={() => { setError(""); if (step === 0) {if(route==="digital-technology")setStarted(false);else setRoute(null);} else setStep((value) => value - 1); }}>← {step>0?"Previous question":"Back"}</button>{(route!=="digital-technology"||question.type==="multi")&&<button className="button button-dark" type="submit">{step === questions.length - 1 ? "Finish questions" : "Continue"} <span aria-hidden="true">→</span></button>}</div>
+          <div className="form-actions"><button type="button" className="text-button" disabled={advancing} onClick={() => { setError(""); if (step === 0) {if(route==="digital-technology")setStarted(false);else setRoute(null);} else setStep((value) => value - 1); }}><UiIcon name="arrow-left" /> {step>0?"Previous question":"Back"}</button>{(route!=="digital-technology"||question.type==="multi")&&<button className="button button-dark" type="submit">{step === questions.length - 1 ? "Finish questions" : "Continue"} <span aria-hidden="true"><UiIcon name="arrow-right" /></span></button>}</div>
         </form> : <form onSubmit={finish}>
           <p className="eyebrow">YOUR QUESTIONS ARE COMPLETE</p>
           <h2 ref={heading} tabIndex={-1}>Your results are ready!</h2>
@@ -133,7 +134,7 @@ export function EligibilityChecker({ signedIn }: { signedIn: boolean }) {
           <label className="consent-label"><input type="checkbox" checked={consent} onChange={(event) => setConsent(event.target.checked)} required /><span>Save my answers and email my result to my verified address. I’ve read the <Link href="/privacy" target="_blank">privacy notice</Link>.</span></label>
           <p className="fine-print">Your score reflects this checklist, not a government scoring system. Your result email is not a marketing subscription.</p>
           {error && <p role="alert" className="form-error">{error}</p>}
-          <button type="submit" className="button button-gold full-width" disabled={busy}>{busy ? "Saving your assessment…" : signedIn ? "See my result" : "Sign up to see my result"}<span aria-hidden="true">↗</span></button>
+          <button type="submit" className="button button-gold full-width" disabled={busy}>{busy ? "Saving your assessment…" : signedIn ? "See my result" : "Sign up to see my result"}<span aria-hidden="true"><UiIcon name="arrow-up-right" /></span></button>
           <div className="form-actions"><button type="button" className="text-button" onClick={() => { setStep(0); setError(""); }}>Review my answers</button>{!signedIn && <Link href="/login?from=checker" onClick={() => { if (consent) saveDraft({ ...draftIdentity.current, version: RULES_VERSION, route, answers, consent, completed: true }); }}>Already have an account?</Link>}</div>
         </form>}
         {storageWarning && <p className="form-error">Your browser is blocking temporary storage. Enable it for this site to keep your answers through signup.</p>}

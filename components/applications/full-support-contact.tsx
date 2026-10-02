@@ -1,3 +1,4 @@
+import { UiIcon } from "@/components/ui-icon";
 export function FullSupportContact() {
   const number = process.env.SUPPORT_WHATSAPP_NUMBER?.trim() ?? "";
   const digits = number.replace(/[\s()+-]/g, "");
@@ -8,7 +9,7 @@ export function FullSupportContact() {
   return <section className="support-contact-choice" aria-label="Full support on WhatsApp">
     <h2>Prefer to chat first?</h2>
     <p>Complete the application form or talk to us on WhatsApp about full support. You can start a conversation without completing the form.</p>
-    <a className="button" href={`https://wa.me/${digits}?text=${encodeURIComponent(message)}`} target="_blank" rel="noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
+    <a className="button" href={`https://wa.me/${digits}?text=${encodeURIComponent(message)}`} target="_blank" rel="noreferrer">Chat on WhatsApp <span aria-hidden="true"><UiIcon name="arrow-up-right" /></span></a>
     <small>WhatsApp: {number.startsWith("+") ? number : `+${digits}`}</small>
   </section>;
 }

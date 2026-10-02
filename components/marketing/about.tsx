@@ -1,3 +1,4 @@
+import { UiIcon } from "@/components/ui-icon";
 import Image from "next/image";
 
 export function About() {
@@ -15,7 +16,7 @@ export function About() {
           <p>When I received my Global Talent Visa endorsement in 2022, other professionals began reaching out for help. I supported a few of them for free—and when they secured their own endorsements, I decided to make it official. LiterallyGlobal was born.</p>
           <p>Since then, professionals have gained endorsements through my one-to-one support and practical resources. Today, I run thriving businesses in the UK while helping talented people get recognised for the work they’ve already done.</p>
           <p className="founder-belief">I know what this opportunity can mean. I’m here to help you take your next step.</p>
-          <a className="button button-dark" href="#services">Work with me <span aria-hidden="true">↗</span></a>
+          <a className="button button-dark" href="#services">Work with me <span aria-hidden="true"><UiIcon name="arrow-up-right" /></span></a>
         </div>
       </div>
     </section>

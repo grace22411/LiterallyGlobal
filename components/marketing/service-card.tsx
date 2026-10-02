@@ -1,3 +1,4 @@
+import { UiIcon } from "@/components/ui-icon";
 import { Fragment } from "react";
 import { DestinationLink } from "@/components/destination-link";
 import type { Service } from "@/lib/services";
@@ -33,7 +34,7 @@ export function ServiceCard({ service }: { service: Service }) {
         <p className="price">{service.price}{service.priceUnit && <> <span>{service.priceUnit}</span></>}</p>
         {service.paymentNote && <p className="service-payment-note">{service.paymentNote}</p>}
         <DestinationLink className={`button ${buttonStyle}`} destination={service.destination} subject={service.subject}>
-          {service.cta} <span aria-hidden="true">↗</span>
+          {service.cta} <span aria-hidden="true"><UiIcon name="arrow-up-right" /></span>
         </DestinationLink>
       </div>
     </article>

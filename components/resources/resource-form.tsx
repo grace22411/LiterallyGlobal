@@ -1,5 +1,6 @@
 "use client";
 
+import { UiIcon } from "@/components/ui-icon";
 import Link from "next/link";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import type { ResourceId } from "@/lib/resources/catalog";
@@ -52,7 +53,7 @@ export function ResourceForm({ resource, name, action }: Props) {
   }
 
   return <>
-    <button type="button" className="button button-outline" aria-haspopup="dialog" onClick={() => setOpen(true)}>Get this free resource <span aria-hidden="true">↗</span></button>
+    <button type="button" className="button button-outline" aria-haspopup="dialog" onClick={() => setOpen(true)}>Get this free resource <span aria-hidden="true"><UiIcon name="arrow-up-right" /></span></button>
     <dialog ref={dialogRef} className={styles.modal} aria-labelledby={`${prefix}-title`} onCancel={() => setOpen(false)} onClose={() => setOpen(false)} onClick={(event) => {
       if (event.target !== event.currentTarget) return;
       const bounds = event.currentTarget.getBoundingClientRect();
@@ -65,7 +66,7 @@ export function ResourceForm({ resource, name, action }: Props) {
         <span className={styles.successMark} aria-hidden="true">✓</span>
         <h3>Your resource is ready.</h3>
         <p>Your details have been saved. {resource === "workbook" ? "Open your workbook in Google Docs." : "Download your free PDF below."}</p>
-        <a ref={downloadRef} className="button button-dark" href={href} target={resource === "workbook" ? "_blank" : undefined} rel="noreferrer">{action} <span aria-hidden="true">{resource === "workbook" ? "↗" : "↓"}</span></a>
+        <a ref={downloadRef} className="button button-dark" href={href} target={resource === "workbook" ? "_blank" : undefined} rel="noreferrer">{action} <span aria-hidden="true">{resource === "workbook" ? <UiIcon name="arrow-up-right" /> : <UiIcon name="arrow-down" />}</span></a>
       </div> : <form onSubmit={submit} onChange={() => { submissionId.current = null; }} aria-label={`Get ${name}`}>
         <p className={styles.formIntro}>A few details, then it’s yours.</p>
         <fieldset disabled={busy} className={styles.fields}>
@@ -76,7 +77,7 @@ export function ResourceForm({ resource, name, action }: Props) {
         </fieldset>
         <p className={styles.privacy}>We’ll store these details with your resource request. This does not subscribe you to marketing emails. <Link href="/privacy">Privacy notice</Link></p>
         {error && <p className="form-error" role="alert">{error}</p>}
-        <button type="submit" className="button button-dark" disabled={busy}>{busy ? "Saving your details…" : "Unlock my resource"}<span aria-hidden="true">↗</span></button>
+        <button type="submit" className="button button-dark" disabled={busy}>{busy ? "Saving your details…" : "Unlock my resource"}<span aria-hidden="true"><UiIcon name="arrow-up-right" /></span></button>
       </form>}
     </dialog>
   </>;

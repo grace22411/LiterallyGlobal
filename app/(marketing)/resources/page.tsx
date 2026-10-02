@@ -1,3 +1,4 @@
+import { UiIcon } from "@/components/ui-icon";
 import Link from "next/link";
 import { freeResources } from "@/lib/resources/catalog";
 import { destinationLinks } from "@/lib/site";
@@ -32,12 +33,12 @@ export default function ResourcesPage() {
         <h2 id="community-heading">Your people. Your next chapter.</h2>
         <p>Join the Global Talent Hub on WhatsApp. Share experiences, ask questions and connect with others on the journey, whichever route you’re taking.</p>
       </div>
-      <a className="button" href={destinationLinks.community} target="_blank" rel="noopener noreferrer">Join the WhatsApp community <span aria-hidden="true">↗</span></a>
+      <a className="button" href={destinationLinks.community} target="_blank" rel="noopener noreferrer">Join the WhatsApp community <span aria-hidden="true"><UiIcon name="arrow-up-right" /></span></a>
     </section>
     <section className="resource-checker-banner">
       <div><p className="eyebrow">NOT SURE WHERE YOU STAND?</p><h2>Start with your eligibility check.</h2><p>Answer questions about your work and evidence. Create a free account at the end to see your readiness score and recommendations.</p></div>
-      <Link className="button button-gold" href="/eligibility">Check my eligibility <span aria-hidden="true">↗</span></Link>
+      <Link className="button button-gold" href="/eligibility">Check my eligibility <span aria-hidden="true"><UiIcon name="arrow-up-right" /></span></Link>
     </section>
-    <section><h2 style={{ fontSize: "1.45rem" }}>Check the official requirements.</h2><p>These tools help you prepare for the digital technology route. Use the current official guidance when deciding what to submit.</p><a className="text-link" href="https://www.gov.uk/global-talent" target="_blank" rel="noreferrer">Read the GOV.UK guidance ↗</a></section>
+    <section><h2 style={{ fontSize: "1.45rem" }}>Check the official requirements.</h2><p>These tools help you prepare for the digital technology route. Use the current official guidance when deciding what to submit.</p><a className="text-link" href="https://www.gov.uk/global-talent" target="_blank" rel="noreferrer">Read the GOV.UK guidance <UiIcon name="arrow-up-right" /></a></section>
   </main>;
 }

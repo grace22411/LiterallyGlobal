@@ -1,5 +1,6 @@
 "use client";
 
+import { UiIcon } from "@/components/ui-icon";
 import Link from "next/link";
 import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
@@ -65,7 +66,7 @@ export function AuthForm({ mode, fromChecker, next }: { mode: "signup" | "login"
         <label className="field-label" htmlFor="email">Email address<input id="email" type="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} required maxLength={254} /></label>
         {mode === "signup" && <label className="consent-label"><input type="checkbox" required checked={consent} onChange={(event) => setConsent(event.target.checked)} /><span>I’ve read the <Link href="/privacy" target="_blank">privacy notice</Link> and understand my email will be used for account access and requested results.</span></label>}
         {error && <p role="alert" className="form-error">{error}</p>}
-        <button className="button button-gold full-width" disabled={busy}>{busy ? "Sending your code…" : mode === "signup" ? "Create account & continue" : "Email my sign-in code"} <span aria-hidden="true">↗</span></button>
+        <button className="button button-gold full-width" disabled={busy}>{busy ? "Sending your code…" : mode === "signup" ? "Create account & continue" : "Email my sign-in code"} <span aria-hidden="true"><UiIcon name="arrow-up-right" /></span></button>
       </form> : step === "code" ? <form onSubmit={verify}>
         <p>If the address can be used for {mode === "signup" ? "signup" : "sign-in"}, a verification code is on its way to <strong>{email}</strong>. Enter every digit from the email.</p>
         <label className="field-label" htmlFor="code">Email verification code<input id="code" className="otp-input" type="text" inputMode="numeric" autoComplete="one-time-code" value={code} onChange={(event) => setCode(normaliseVerificationCode(event.target.value))} pattern={OTP_PATTERN} minLength={OTP_MIN_LENGTH} maxLength={OTP_MAX_LENGTH} required autoFocus /></label>
